@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-name
+  labels:
+    label-key1: label-value1
+spec:
+  rules: # rules bisa lebih dari satu
+    - host: sub.domain.com # akses ingress pake host apa
+      http:
+        paths:
+          - path: / # menentukan path , jika mau ke service 1 bisa /service1
+            pathType: Prefix
+            backend:
+              service: 
+                name: service-name
+                port:
+                  number: 80
