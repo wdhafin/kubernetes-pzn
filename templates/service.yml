@@ -1,0 +1,11 @@
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-name
+spec:
+  selector: # digunakan untuk mengidentifikasi pod mana yang akan dituju
+    label-key1: label-value1
+  ports:
+  - port: 8080 # port service
+    targetPort: 80 # target port ( atau port dari pod )
