@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-service
+  labels:
+    label-key1: label-value1
+spec:
+  type: ExternalName # untuk mendelarasikan service untuk ke external name
+  externalName: example.com # domain untuk external
+  ports:
+    - port: 80 # port
