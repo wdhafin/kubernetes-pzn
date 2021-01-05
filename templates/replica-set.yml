@@ -9,7 +9,7 @@ metadata:
 spec:
   replicas: 3
   selector:
-    matchLabels:
+    matchLabels: # menggunakan matchLabels jadi harus sama
       label-key1: label-value1
   template:
     metadata:
