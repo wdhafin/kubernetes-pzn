@@ -1,0 +1,27 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cron-job-name
+  labels:
+    label-key: label-value
+  annotations:
+    annotation-key1: annotation-value1
+spec:
+  schedule: "* * * * *" # digunakan untuk eksekusi tiap berapa waktu
+  jobTemplate: # ini adalah job , karena cron job akan membuat job
+    spec:
+      selector:
+        matchLabels:
+          label-key1: label-value1
+      template:
+        metadata:
+          name: pod-name
+          labels:
+            label-key1: label-value1
+        spec:
+          restartPolicy: Never
+          containers:
+            - name: container-name
+              image: image-name
+              ports:
+                - containerPort: 80
