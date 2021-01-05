@@ -1,0 +1,26 @@
+apiVersion: batch/v1 # versi untuk job
+kind: Job
+metadata:
+  name: job-name
+  labels:
+    label-key1: label-value1
+  annotations:
+    annotation-key1: annotation-value1
+spec:
+  completions: 5 # default 1 , digunakan untuk berapa banyak job yang harus di jalan kan sampai di anggap selesai
+  parallelism: 2 # default 1 , berapa banyak pod yang akan berjalan dalam 1 waktu
+  selector:
+    matchLabels:
+      label-key1: label-value1
+  template:
+    metadata:
+      name: pod-name
+      labels:
+        label-key1: label-value1
+    spec:
+      restartPolicy: Never # restartPolicy harus never agar saat selesai tidak nyala lagi
+      containers:
+        - name: container-name
+          image: image-name
+          ports:
+            - containerPort: 80
